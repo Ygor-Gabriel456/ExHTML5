@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar Tabelas</title>
+    <style>
+        table{
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        
+        td{
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            font-weight:bold;
+            color: #000000;
+        }
+
+        .par{
+            background-color: green;
+            color: #FFFFFF;
+        }
+
+        .impar{
+            background-color: yellow;
+            color: #000000;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Tabela Gerada a partir das entradas</h1>
+    
+    <script>
+        let numLinhas = parseInt(prompt("Digite o número de linhas da tabela"));
+        let numColunas = parseInt(prompt("Digite o números de colunas da tabela"));
+
+        if(isNaN(numLinhas) || isNaN(numColunas) || numLinhas <= 0 || numColunas <=0){
+            alert("Por Favor, insira o número válidos para linhas e colunas da sua tabela");
+        } 
+        else {
+            // Criação da tabela
+            let tabela = document.createElement("table");
+
+            // Gerar as linhas e colunas
+            for (let i = 0; i < numLinhas; i++) {
+                let linha = tabela.insertRow(); // Cria uma nova linha
+
+                for (let j = 0; j < numColunas; j++) {
+                    let celula = linha.insertCell(); // Cria uma nova célula
+
+                    // Adiciona o texto da célula (coordenadas)
+                    celula.textContent = `(${i + 1}, ${j + 1})`;
+
+                    // Verifica se a coluna é ímpar ou par e aplica a classe correspondente
+                    if ((j + 1) % 2 === 0) {
+                        celula.classList.add("par");
+                    } else {
+                        celula.classList.add("impar");
+                    }
+                }
+            }
+           
+            document.body.appendChild(tabela);
+        }
+    </script>
+    
+</body>
+</html>
+

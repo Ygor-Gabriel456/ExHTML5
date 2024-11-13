@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 60%;
+            margin: 20px;
+            background-color: #CCCCCC;
+            border-collapse: collapse;
+        }
+
+        th{
+            font-size:15px;
+            font-weight: 700;
+            background-color: #000033;
+            color: #CCCCCC;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td{
+            font-size: 14px;
+            background-color: #000066;
+            color: #CCCCCC;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: #333;">Inserir nomes para tabela</h1>
+
+    <button onclick="adicionarNomes()">Adicionar Nomes</button>
+
+    <table id="tabelaNome">
+        <thead>
+            <tr>
+                <th>Indice</th>
+                <th>Nomes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Nomes serão inputados aqui-->
+
+        </tbody>
+    </table>
+
+    <script>
+
+        let indice = 1;
+        //exibe no prompt para o user adicionar nomes
+        function adicionarNomes(){
+            let nome = prompt("Digite um nome(ou clique em cancelar para terminar )");
+            //se o nome for null (cancelado)
+            if(nome == null){
+                return;
+            }
+
+            //cria uma nova linda na tabela
+            let tabela = document.getElementById("tabelaNome").getElementsByTagName("tbody")[0];
+           let novaLinha =  tabela.insertRow();
+
+            //adicionar novos indices
+            let celulaIndice = novaLinha.insertCell(0);
+             celulaIndice.textContent = indice;
+            let celulaNome = novaLinha.insertCell(1);
+            celulaNome.textContent = nome;
+
+
+            //Incrementa o indice para o proximo nome
+            indice++;
+        }
+
+    </script>
+</body>
+</html>

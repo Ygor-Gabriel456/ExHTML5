@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Texto</title>
+    <style>
+        body{
+
+            font-family: Arial, Helvetica, sans-serif;
+            margin:20px;
+        }
+
+        .container{
+            width: 50%;
+            margin: auto;
+            text-align: center;
+        }
+
+        input[type="text"]{
+            width: 80%;
+            padding:10px;
+            margin:10px 0;
+            font-size: 16px;
+        }
+
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .output{
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid;
+            background-color: #f4f4f4;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            word-wrap: break-word;
+        }
+
+        .output p {
+            margin: 5px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulário de Texto</h1>
+
+        <input type="text" id="texto" placeholder="Digite uma palavra ou uma frase">
+        <br>
+        <button onclick="transformarMaiusculo()">Maiusculo</button>
+        <button onclick="separarPalavras()">Separar</button>
+
+        <div id="saidaMaiuscula" class="output"></div>
+        <div id="saidaSeparada" class="output"></div>
+    </div>
+
+    <script>
+       function transformarMaiusculo(){
+             
+            //obter o valor do campo
+
+            const texto = document.getElementById("texto").value;
+
+            //converter para maiusculo
+            const textoMaiusculo = texto.toUpperCase();
+
+            //Exibir o texto na div saidaMinuscula
+            const divMinuscula = document.getElementById("saidaMaiuscula");
+            divMinuscula.textContent = textoMaiusculo;
+
+        }
+           
+
+        function separarPalavras(){
+            //obter o valor do campo 
+            const texto = document.getElementById("texto").value;
+
+            //dividir o texto com base no espaço
+            const palavra = texto.split(" ");
+
+            //exibir as palavras separadas em linhas diferentes
+            const divSeparada = document.getElementById("saidaSeparada");
+            divSeparada.innerHTML = ''; //limpar a div antes de adicionar
+
+            palavra.forEach(function(palavra){
+                const paragrafo = document.createElement("p");
+                paragrafo.textContent = palavra;
+                divSeparada.appendChild(paragrafo);
+            });
+        }
+    </script>
+</body>
+</html>
